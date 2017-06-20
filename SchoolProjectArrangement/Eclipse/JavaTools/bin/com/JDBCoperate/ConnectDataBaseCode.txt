@@ -1,0 +1,14 @@
+Java 连接 Oralce
+Driver = oracle.jdbc.driver.OracleDriver
+URL = jdbc:oracle:thin:@localhost:1521:LittleLibrary 
+
+
+Java 连接 MySQL
+Driver = com.mysql.jdbc.Driver
+URL = jdbc:mysql://localhost/LittleLibrary
+
+Java 连接 SQL
+Driver = com.microsoft.sqlserver.jdbc.SQLServerDriver
+URL = jdbc:sqlserver://127.0.0.1:1433;DatabaseName=LittleLibrary
+User = sa
+Password = 0818

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true"/>
+	<package name="struts2" extends="struts-default" namespace="/UserLogin">
+	<interceptors>
+		<interceptor name="myInterceptor1" class="com.struts2.Interceptor.MyInterceptor1">
+			<param name="name">name</param>
+		</interceptor>
+	</interceptors>
+		<action name="login" class="com.struts2.action.LoginAction" method="execute">
+			<result name="success" type="redirectAction">
+				 <param name="actionName">login2</param>
+                 <param name="namespace">/UserLogin</param>
+                 <param name="username">${username}</param>
+                 <param name="password">${password}</param>
+			</result>
+			
+			<result name="login">/login.jsp</result>
+			<result name="input">/login.jsp</result>
+			<interceptor-ref name="myInterceptor1"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		
+		<action name="login2" class="com.struts2.action.LoginAction2" method="execute">
+			<result name="success">/index.jsp</result>
+		</action>
+		
+		<action name="fileupload" class="com.struts2.action.UploadAction" method="execute">
+			<result name="success">/fileupload.jsp</result>
+		</action>
+		<action name="manyfileupload" class="com.struts2.action.ManyUploadAction" method="execute">
+			<result name="success">/manyfileupload.jsp</result>
+		</action>
+		<action name="downloadFile" class="com.struts2.action.DownloadAction" method="execute">
+			<result name="success" type="stream">
+				<param name="contentDisposition">attachment;filename=${downfilename}</param>
+				<param name="inputName">downloadFile</param>
+			</result>
+		</action>
+		<action name="token" class="com.struts2.action.TokenAction" method="execute">
+			<result name="success">/index.jsp</result>
+			<result name="invalid.token">/ReplaceRequest.jsp</result>
+			
+			<interceptor-ref name="token"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+	</package>
+	<package name="namespaceTest" extends="struts-default" namespace="/theNameSpace">
+		<action name="thenamespace" class="com.struts2.action.TheNameSpaceAction" method="execute">
+			<result name="success">namespace.jsp</result>
+		</action>
+	</package>
+</struts>

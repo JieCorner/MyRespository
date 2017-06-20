@@ -1,0 +1,19 @@
+<?xml version='1.0'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+          "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.hibernate.map.bean.Team" table="team">
+    	<id name="id" column="id" type="string">
+    		<generator class="uuid"></generator> 
+    	</id>
+    	<property name="teamname" column="teamname" type="string"></property>
+    	
+    	<map name="students" table="team_student">
+    		<key column="team_id"></key>
+    		<map-key column="student_name" type="string"></map-key>
+    		<element column="description" type="string"></element>
+    	</map>
+    	
+    </class>
+</hibernate-mapping>

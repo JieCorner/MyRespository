@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+ 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ 	xmlns:context="http://www.springframework.org/schema/context"
+  	xmlns:tx="http://www.springframework.org/schema/tx"
+   	xmlns:aop="http://www.springframework.org/schema/aop" 
+  	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-2.5.xsd
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+	">
+	<aop:aspectj-autoproxy />
+	<context:annotation-config />
+	<context:component-scan  base-package="com.news.management.service"/>
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	
+	<!-- 配置c3p0连接池 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<!-- 注入属性值 -->
+		<property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/newsmanagement?characterEncoding=UTF-8"></property>
+		<property name="user" value="root"></property>
+		<property name="password" value="0818"></property>
+	</bean>
+	
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<!-- 注入数据源,即数据库的配置 -->
+		<property name="dataSource" ref="dataSource"></property>
+		<!-- 指定hibernate核心配置文件 -->
+		<property name="configLocations" value="classpath:hibernate.cfg.xml"></property>
+	</bean>
+	
+	
+	<bean id="LoginAction" class="com.news.management.action.LoginAction" scope="prototype"/>
+	<bean id="RegisterAction" class="com.news.management.action.RegisterAction" scope="prototype"/>
+	<bean id="UpdateUserAction" class="com.news.management.action.UpdateUserAction" scope="prototype"/>
+	<bean id="CutUserAvatarAction" class="com.news.management.action.CutUserAvatarAction" scope="prototype"/>
+	<bean id="UploadAvatarAction" class="com.news.management.action.UploadAvatarAction" scope="prototype"/>
+	<bean id="NewsCategoryAction" class="com.news.management.action.NewsCategoryAction" scope="prototype"/>
+	<bean id="NewsAction" class="com.news.management.action.NewsAction" scope="prototype"/>
+	<bean id="ViewNewsAction" class="com.news.management.action.ViewNewsAction" scope="prototype"/>
+	<bean id="IndexAction" class="com.news.management.action.IndexAction" scope="prototype"/>
+	<bean id="GetNewsByCategoryAction" class="com.news.management.action.GetNewsByCategoryAction" scope="prototype"/>
+	<bean id="CommentAction" class="com.news.management.action.CommentAction" scope="prototype"/>
+	<bean id="SelectNewsAction" class="com.news.management.action.SelectNewsAction" scope="prototype"/>
+	<!-- 
+	<bean id="UserService" class="com.news.management.service.UserService">
+		<property name="userDAO" ref="UserDAOImpl"></property>
+	</bean>
+	 -->
+	<bean id="CommentDAOImpl" class="com.news.management.DAOImpl.CommentDaoImpl">
+		<property name="hibernatetemplate" ref="HibernateTemplate"></property>
+	</bean>
+	<bean id="UserDAOImpl" class="com.news.management.DAOImpl.UserDAOImpl">
+		<property name="hibernatetemplate" ref="HibernateTemplate"></property>
+	</bean>
+	<bean id="NewsCategoryDaoImpl" class="com.news.management.DAOImpl.NewsCategoryDaoImpl">
+		<property name="hibernatetemplate" ref="HibernateTemplate"></property>
+	</bean>
+	<bean id="NewsDAOImpl" class="com.news.management.DAOImpl.NewsDAOImpl">
+		<property name="hibernatetemplate" ref="HibernateTemplate"></property>
+	</bean>
+	<bean id="SelectNewsDAOImpl" class="com.news.management.DAOImpl.SelectNewsDaoImpl">
+		<property name="hibernatetemplate" ref="HibernateTemplate"></property>
+	</bean>
+	
+	<bean id="HibernateTemplate" class="org.springframework.orm.hibernate5.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+</beans>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+ 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ 	xmlns:context="http://www.springframework.org/schema/context"
+  	xmlns:tx="http://www.springframework.org/schema/tx"
+   	xmlns:aop="http://www.springframework.org/schema/aop" 
+  	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-2.5.xsd
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+	">
+	<aop:aspectj-autoproxy />
+	<context:annotation-config />
+	<context:component-scan  base-package="com.spring"/>
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	
+	<!-- 配置c3p0连接池 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<!-- 注入属性值 -->
+		<property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/hibernate2"></property>
+		<property name="user" value="root"></property>
+		<property name="password" value="0818"></property>
+	</bean>
+	
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<!-- 注入数据源,即数据库的配置 -->
+		<property name="dataSource" ref="dataSource"></property>
+		<!-- 指定hibernate核心配置文件 -->
+		<property name="configLocations" value="classpath:hibernate.cfg.xml"></property>
+	</bean>
+	
+	
+	<bean id="UserAction" class="com.SSH.Integration.action.UserAction" scope="prototype">
+		<property name="userService" ref="UserService"></property>
+	</bean>
+	
+	<bean id="UserService" class="com.SSH.Integration.service.UserService">
+		<property name="userDAO" ref="UserDAOImpl"></property>
+	</bean>
+	
+	<bean id="UserDAOImpl" class="com.SSH.Integration.DAOImpl.UserDAOImpl">
+		<property name="hibernatetemplate" ref="HibernateTemplate"></property>
+	</bean>
+	
+	<bean id="HibernateTemplate" class="org.springframework.orm.hibernate5.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+</beans>

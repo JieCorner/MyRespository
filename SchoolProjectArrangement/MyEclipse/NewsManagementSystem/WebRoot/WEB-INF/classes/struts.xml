@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+	<package name="Loginnews" extends="json-default" namespace="/">
+		<action name="addCommentAction" class="CommentAction">
+			<result type='json'>
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="getCommentPagetAction" class="CommentAction" method="getCommentListpage">
+			<result type='json'>
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="markUpforCommentAction" class="CommentAction" method="markUpforComment">
+			<result type='json'>
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="LoginAction" class="LoginAction">
+			<result type='json'>
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="ExitAction" class="LoginAction" method="UserExit">
+			<result type='json'>
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="indexdataAction" class="IndexAction" method="getIndexData">
+			<result type='json'>
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="cutUserAvatarAction" class="CutUserAvatarAction">
+			<result type='json'>
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+		<action name="UpdateSurePasswordAction" class="UpdateUserAction" method="SurePassword">
+			<result type='json'>
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+	</package>
+	<package name="news" extends="struts-default" namespace="/">
+		<action name="indexAction" class="IndexAction">
+			<result name="success">/index.jsp</result>
+		</action>
+		<action name="RegisterAction" class="RegisterAction">
+			<result name="success" type="redirect">/index.jsp</result>
+			<result name="input">/Register.jsp</result>
+		</action>
+		<action name="UpdateUserAction" class="UpdateUserAction">
+			<result name="success">/UserInfo.jsp</result>
+		</action>
+		<action name="UpdateUserInfoAction" class="UpdateUserAction" method="updateUser">
+			<result name="success">/UserInfo.jsp</result>
+		</action>
+		<action name="AddCategoryAction" class="NewsCategoryAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">GetCategoryListAction</param>
+			</result>
+			<result name="input">/AddNewsCategory.jsp</result>
+		</action>
+		<action name="GetCategoryListAction" class="NewsCategoryAction" method="getCategoryList">
+			<result name="success">/NewsCategoryList.jsp</result>
+		</action>
+		<action name="ViewNewsForUserAction" class="ViewNewsAction" method="UserViewNews">
+			<result name="success">/UserViewNews.jsp</result>
+		</action>
+		<action name="updateNewsCategoryAction" class="NewsCategoryAction" method="updateNewsCategory">
+			<result name="success">/UpdateNewsCategory.jsp</result>
+		</action>
+		<action name="getNewsCategoryListForNewAction" class="NewsAction" method="getCategoryList">
+			<result name="list">/PublishNews.jsp</result>
+		</action>
+		<action name="selectNewsBytitleAction" class="SelectNewsAction">
+			<result name="success">/SelectNewsResult.jsp</result><!-- 搜索新闻页面 -->
+		</action>
+		<action name="getCommentListAction" class="ViewNewsAction" method="getCommentLists"><!-- 测试 -->
+			<result name="success">/CommentList.jsp</result>
+		</action>
+		<action name="AddNewAction" class="NewsAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">getNewListAction</param>
+			</result><!-- 新闻列表 -->
+		</action>
+		<action name="getUpdateNewAction" class="NewsAction" method="updateNews">
+			<result name="success" >/UpdateNews.jsp</result>
+		</action>
+		<action name="updatedNewAction" class="NewsAction" method="updatedNews">
+			<result name="success" type="redirectAction">
+				<param name="actionName">getNewListAction</param>
+			</result><!-- 新闻列表 -->
+		</action>
+		<action name="getNewListAction" class="NewsAction" method="getNewList">
+			<result name="list" >/NewsList.jsp</result><!-- 新闻列表 -->
+		</action>
+		<action name="getNewListByCategoryIdAction" class="NewsAction" method="getNewListByCategory">
+			<result name="list" >/NewsList.jsp</result><!-- 新闻列表 -->
+		</action>
+		<action name="viewNewsAction" class="ViewNewsAction">
+			<result name="success" >/ViewNews.jsp</result>
+		</action>
+		<action name="getNewsByCategoryAction" class="GetNewsByCategoryAction">
+			<result name="success" >/UserViewNewsByCategory.jsp</result>
+		</action>
+		<action name="deleteNewsAction" class="NewsAction" method="deleteNew">
+			<result name="success" type="redirectAction">
+				<param name="actionName">getNewListAction</param>
+			</result><!-- 新闻列表 -->
+		</action>
+		<action name="updatedNewsCategoryAction" class="NewsCategoryAction" method="updatedNewsCategory">
+			<result name="success" type="redirectAction">
+				<param name="actionName">GetCategoryListAction</param>
+			</result>
+		</action>
+		<action name="deleteCategoryAction" class="NewsCategoryAction" method="deleteNewsCategory">
+			<result name="success" type="redirectAction">
+				<param name="actionName">GetCategoryListAction</param>
+			</result>
+		</action>
+		<action name="uploadUserAvatar" class="UploadAvatarAction">
+			<param name="savePath">/uploadAvatar</param>
+			<result name="success">/UserUploadAvatar/modify.jsp</result>
+			<interceptor-ref name="defaultStack">
+				<param name="fileUpload.maximumSize">1048576</param>
+				<param name="fileUpload.allowedExtensions">png,jpg</param>
+			</interceptor-ref>
+		</action>
+	</package>
+</struts>

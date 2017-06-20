@@ -1,0 +1,18 @@
+<?xml version='1.0'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+          "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.hibernate.midtable.mtom.bean.MMCourse" table="mmcourse">
+    	<id name="id" column="id" type="string">
+    		<generator class="uuid"></generator> 
+    	</id>
+    	<property name="name" column="name" type="string"></property>
+    	
+    	<set name="students" table="mmstudent_mmcourse" cascade="save-update"  >
+    		<key column="mmcourse_id"></key>
+    		<many-to-many column="mmstudent_id" class="com.hibernate.midtable.mtom.bean.MMStudent"></many-to-many>
+    	</set>
+    	
+    </class>
+</hibernate-mapping>

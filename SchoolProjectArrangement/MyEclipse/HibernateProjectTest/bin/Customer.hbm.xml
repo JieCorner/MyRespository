@@ -1,0 +1,20 @@
+<?xml version='1.0'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+          "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.hibernate.twoway.otom.bean.Customer" table="customer">
+    	<id name="id" column="id" type="long">
+    		<generator class="increment"></generator> 
+    	</id>
+    	<property name="username" type="string">
+    		<column name="username" length="20"></column>
+    	</property>
+    	
+    	<set name="orders" cascade="save-update,delete" inverse="true">
+    		<key column="customer_id"></key>
+    		<one-to-many class="com.hibernate.twoway.otom.bean.Order"/>
+    	</set>
+    	
+    </class>
+</hibernate-mapping>

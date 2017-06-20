@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+  <display-name></display-name>
+  <servlet>
+    <description>TO deal the registe information</description>
+    <servlet-name>RegisterDeal</servlet-name>
+    <servlet-class>com.Tourism.www.RegisterDeal</servlet-class>
+  </servlet>
+  <servlet>
+    <description>TO deal the Session information</description>
+    <servlet-name>DispleSession</servlet-name>
+    <servlet-class>com.Tourism.www.DispleSession</servlet-class>
+  </servlet>
+  <servlet>
+    <description>TO deal the Login information</description>
+    <servlet-name>LoginDeal</servlet-name>
+    <servlet-class>com.Tourism.www.LoginDeal</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>InsertUserDeal</servlet-name>
+    <servlet-class>com.Tourism.www.InsertUserDeal</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>OrderInformation</servlet-name>
+    <servlet-class>com.OrderPage.OrderInformation</servlet-class>
+  </servlet>
+  <servlet>
+    <description>TO deal the productcom information</description>
+    <servlet-name>ProductCom</servlet-name>
+    <servlet-class>com.OrderPage.ProductCom</servlet-class>
+  </servlet>
+  <servlet>
+    <description>TO deal the productcom information</description>
+    <servlet-name>UserProblem</servlet-name>
+    <servlet-class>com.OrderPage.UserProblem</servlet-class>
+  </servlet>
+  <servlet>
+    <description>TO deal the productcom information</description>
+    <servlet-name>InsertProblem</servlet-name>
+    <servlet-class>com.OrderPage.InsertProblem</servlet-class>
+  </servlet>
+  <servlet>
+    <description>TO deal the productcom information</description>
+    <servlet-name>AddOrder</servlet-name>
+    <servlet-class>com.OrderPage.AddOrder</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>PersonInfo</servlet-name>
+    <servlet-class>com.Tourism.UserInfomation.PersonInfo</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>InfoOrder</servlet-name>
+    <servlet-class>com.Tourism.UserInfomation.InfoOrder</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>InfoProblem</servlet-name>
+    <servlet-class>com.Tourism.UserInfomation.InfoProblem</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ProblemReply</servlet-name>
+    <servlet-class>com.Tourism.UserInfomation.ProblemReply</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>UploadServlet</servlet-name>
+    <servlet-class>com.Tourism.upload.UploadServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>CutPhotoServlet</servlet-name>
+    <servlet-class>com.Tourism.upload.CutPhotoServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ModifyInfo</servlet-name>
+    <servlet-class>com.Tourism.UserInfomation.ModifyInfo</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>PublishCom</servlet-name>
+    <servlet-class>com.Tourism.UserInfomation.PublishCom</servlet-class>
+  </servlet>
+
+
+
+
+
+
+
+
+
+
+  <servlet-mapping>
+    <servlet-name>RegisterDeal</servlet-name>
+    <url-pattern>/RegisterDeal</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DispleSession</servlet-name>
+    <url-pattern>/DispleSession</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>LoginDeal</servlet-name>
+    <url-pattern>/LoginDeal</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>InsertUserDeal</servlet-name>
+    <url-pattern>/InsertUserDeal</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>OrderInformation</servlet-name>
+    <url-pattern>/OrderInformation</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ProductCom</servlet-name>
+    <url-pattern>/ProductCom</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UserProblem</servlet-name>
+    <url-pattern>/UserProblem</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>InsertProblem</servlet-name>
+    <url-pattern>/InsertProblem</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddOrder</servlet-name>
+    <url-pattern>/AddOrder</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>PersonInfo</servlet-name>
+    <url-pattern>/PersonInfo</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>InfoOrder</servlet-name>
+    <url-pattern>/InfoOrder</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>InfoProblem</servlet-name>
+    <url-pattern>/InfoProblem</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ProblemReply</servlet-name>
+    <url-pattern>/ProblemReply</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UploadServlet</servlet-name>
+    <url-pattern>/UploadServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CutPhotoServlet</servlet-name>
+    <url-pattern>/CutPhotoServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ModifyInfo</servlet-name>
+    <url-pattern>/ModifyInfo</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>PublishCom</servlet-name>
+    <url-pattern>/PublishCom</url-pattern>
+  </servlet-mapping>
+
+
+  	
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>

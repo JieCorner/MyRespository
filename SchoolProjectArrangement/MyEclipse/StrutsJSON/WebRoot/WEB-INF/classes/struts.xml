@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org.dtds/struts-2.5.dtd">
+<struts>
+	<package name="lab6" extends="struts-default" namespace="/user">
+		<action name="Register" class="com.week6.action.RegisterAction" method="register">
+			<result name="input">/register.jsp</result>
+			<result name="success">/success.jsp</result>
+		</action>
+	</package>
+	<package name="jsonTest" extends="json-default">  
+        <action name="getjson" class="com.easyui.test.JsonAction">
+			<result type="json">
+				<param name="root">responseJson</param>
+			</result>
+		</action>
+    </package> 
+</struts>
+	

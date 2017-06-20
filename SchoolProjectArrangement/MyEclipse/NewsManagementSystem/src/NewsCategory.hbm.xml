@@ -1,0 +1,18 @@
+<?xml version='1.0'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+          "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.news.management.bean.NewsCategory" table="newscategory">
+    	<id name="CategoryId" column="CategoryId">
+    		<generator class="native"></generator> 
+    	</id>
+    	<property name="newsCategoryName" column="newsCategoryName"></property>
+    	
+    	<set name="newslist" cascade="all" inverse="true" lazy="false">
+    		<key column="Category_Id"></key>
+    		<one-to-many class="com.news.management.bean.News"/>
+    	</set>
+    	
+    </class>
+</hibernate-mapping>

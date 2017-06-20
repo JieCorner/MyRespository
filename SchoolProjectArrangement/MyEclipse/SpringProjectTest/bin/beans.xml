@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:context="http://www.springframework.org/schema/context"
+		xmlns:aop="http://www.springframework.org/schema/aop"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans
+				http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+				http://www.springframework.org/schema/context
+				http://www.springframework.org/schema/context/spring-context-2.5.xsd
+				http://www.springframework.org/schema/aop
+				http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+	<context:annotation-config />
+	<context:component-scan  base-package="com.spring"/>
+	<aop:aspectj-autoproxy />
+	<!-- <bean id="UserDaoImpl" class="com.spring.dao.impl.UserDAOImpl"></bean> -->
+	
+	<aop:config>
+		<aop:pointcut id="myPointCut" expression="execution(public void com.spring.dao.impl.UserDAOImpl.save(com.spring.bean.User))"/>
+		<aop:aspect id="LogInterceptor2" ref="LogInterceptor2">
+			<aop:before method="beforeMethod2" pointcut-ref="myPointCut"></aop:before>
+		</aop:aspect>
+	</aop:config>
+	
+	<bean id="UserService" class="com.spring.service.UserService" scope="singleton">
+	<!-- 
+		<constructor-arg>
+			<ref bean="UserDaoImpl"/>
+		</constructor-arg>
+		<constructor-arg index="1" value="UserService's Name"/>
+	 -->
+	 
+		<property name="userDAO">
+			<ref bean="UserDaoImpl"/>
+		</property>
+		<property name="serviceName" value="UserService's Name"></property>
+	 
+	</bean>
+	<bean id="OtherService" class="com.spring.service.OtherService">
+		<property name="serviceName" value="OtherService's Name"></property>
+	</bean>
+	
+	
+</beans>

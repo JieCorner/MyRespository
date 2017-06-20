@@ -1,0 +1,55 @@
+#join_mian_right{
+    width: 500px;
+    margin-left: 500px;
+}
+#join_mian_left{
+    float: left;
+    width: 500px;
+}
+.recommend{
+      float: left;
+      margin-left: 50px;
+      margin-right: 20px;
+      background: #fffa90;
+      background-size: 250px 150px;
+      width:250px;
+      height: 150px
+    }
+.sliderecom{
+    width: 250px;
+    margin-top:120px;
+    height: 30px;
+    background:black;
+    color: white;
+    text-align: center;
+    opacity: 0.6
+}
+.join_button{
+    background: black;
+    color: white;
+    margin-left: 50px;
+}
+.form-group{
+    margin-left: 50px;
+}
+.sm_picture{
+    width:100px;
+    float: left;
+    height: 100px;
+    margin: 2px 5px;
+    height:100px;
+}
+.prompt{
+    display: none;
+    color: red;
+    font-size: 12px;
+}
+body{
+    background: #1A1A1A;
+}
+h3{
+    color: white;
+}
+p{
+    color: #888888;
+}

@@ -1,0 +1,25 @@
+<?xml version='1.0'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+          "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.news.management.bean.News" table="news">
+    	<id name="NumberId" column="NumberId">
+    		<generator class="native"></generator> 
+    	</id>
+    	<property name="content" column="content" type="text"></property>
+    	<property name="title" column="title"></property>
+    	<property name="picName" column="picName"></property>
+    	<property name="time" column="time" type="timestamp"></property>
+    	<property name="NewsSource" column="NewsSource"></property>
+    	<property name="viewtimes" column="viewtimes" type="integer"></property>
+    	
+    	<many-to-one name="newscategory" class="com.news.management.bean.NewsCategory" lazy="false" column="Category_Id"/>
+    	
+    	<set name="comments" cascade="all" inverse="true">
+    		<key column="New_Comment_Id"></key>
+    		<one-to-many class="com.news.management.bean.Comment"/>
+    	</set>
+    	
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,4 @@
+mysqlDriver = com.microsoft.sqlserver.jdbc.SQLServerDriver
+mysqlURL = jdbc:sqlserver://127.0.0.1:1433;DatabaseName=curriculumproject
+mysqlUser = sa
+mysqlPwd = 0818

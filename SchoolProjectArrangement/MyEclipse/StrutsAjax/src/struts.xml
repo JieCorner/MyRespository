@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"struts-2.0.dtd">
+<struts>
+	<package name="struts2" extends="json-default">
+		<action name="getXMLAction" class="com.StrutsAjax.javaBean.GetXMLAction"><!-- 这里不能写成getXMLAction.action -->	
+		</action>
+		<action name="getJsonAction" class="com.StrutsAjax.javaBean.GetJsonAction">	
+		</action>
+		<action name="getJsonAction2" class="com.StrutsAjax.StrutsJson.GetJsonAction2">	
+			<result name="success" type='json'>
+				<param name="excludeProperties">name</param>
+			</result>
+		</action>
+	</package>
+	
+</struts>
+

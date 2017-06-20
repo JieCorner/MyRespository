@@ -1,0 +1,50 @@
+#center{
+    width: 1000px;
+    margin: 0 auto;
+}
+#tail{
+    width: 100%;
+    height: 250px;
+    background: black;
+}
+#turn{
+    width: 1000px;
+    margin: 0 auto;
+}
+#main_centext{
+    width: 1000px;
+    margin: 10px  auto;
+}
+#mian_right{
+    width: 800px;
+    margin-right: 0px;
+}
+#mian_left{
+    float: left;
+    width: 200px;
+}
+.show_view{
+    width: 250px;
+    height: 250px;
+    float: left;
+    margin-left: 10px;
+    margin-bottom: 130px;
+}
+#version{
+    width: 1000px;
+    padding-top: 20px;
+    margin: 0px auto;
+}
+.version_tap{
+    float: left;
+    margin-right:180px ;
+}
+.version_tap a{
+    color: white;
+}
+.society_web{
+    width:5%;
+    height:5%;
+    margin-top: 5px;
+    margin-left: 10px;
+}

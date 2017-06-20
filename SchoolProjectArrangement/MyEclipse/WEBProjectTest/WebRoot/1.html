@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+<script src="jquery1.2.0.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+			$("#button1").click(function(){
+				$.ajax({
+					type:"get",
+					url:"JqueryServlet",
+					dateType:"html",
+					data:{"param1":$("#param1").val(),"param2":$("#param2").val()},
+					success:function(returnedData){
+					$("#result").val(returnedData);
+						}
+					});
+				});
+		});
+</script>
+<body>
+<input type="text" id="param1">+
+<input type="text" id="param2">=
+<input type="text" id="result"><input type="button" value="get content from server" id="button1">
+</body>
+</html>
